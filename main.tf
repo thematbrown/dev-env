@@ -80,10 +80,11 @@ resource "aws_instance" "name" {
   key_name               = aws_key_pair.dev_env_key.id
   vpc_security_group_ids = [aws_security_group.dev_sg.id]
   subnet_id              = aws_subnet.dev_public_subnet.id
+  user_data              = file("userdata.tpl")
 
   tags = {
     Name = "dev-node"
   }
 
-  user_data = file("userdata.tpl")
+
 }
