@@ -87,4 +87,12 @@ resource "aws_instance" "name" {
   }
 
 
+  provisioner "local-exec" {
+    command = templatefile("linux-ssh-config.tpl", {
+      hostname = self.public_ip 
+      user = "ubuntu"
+      identityfile = "~/.ssh/mykeys/dev_env"
+    })
+    interpreter = ["bash", "-c"]
+  }
 }
