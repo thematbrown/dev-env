@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "${var.region}"
   shared_credentials_files = ["credentials"]
   profile = "default"
 }
